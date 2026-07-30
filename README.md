@@ -15,3 +15,9 @@ Become a Cloud Security Engineer.
 - TryHackMe
 - GitHub
 - AWS
+
+## Skills
+
+- Linux
+- Networking
+- Git

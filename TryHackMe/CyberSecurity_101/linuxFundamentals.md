@@ -40,5 +40,5 @@
 > SSH:
     stands for secure shell scripting allows us to remotely execute commands on another device remotely. Data sent is encrypted when in the network.
 
-    eg: tryhackme@ip address
+    eg: ssh tryhackme@ip address
 

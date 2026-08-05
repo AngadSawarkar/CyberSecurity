@@ -143,7 +143,7 @@ Options:
 * `stop`
 * `enable` (start on boot)
 * `disable`
-* `status`
+* `status` 
 
 ## Foreground & Background Processes
 
@@ -186,4 +186,207 @@ fg          # Bring background process to foreground
 Ctrl + Z    # Suspend/background current process
 ```
 
+
+# Linux Cron & Crontab – Quick Notes
+
+## What is Cron?
+
+* **Cron** is a service that runs scheduled tasks automatically.
+* It starts during system boot.
+* It executes tasks defined in a **crontab**.
+
+## What is Crontab?
+
+* A **crontab** is a file that stores scheduled jobs (cron jobs).
+* Each job is written on a single line.
+
+## Crontab Format
+
+```text
+MIN HOUR DOM MON DOW CMD
+```
+
+| Field | Description                     |
+| ----- | ------------------------------- |
+| MIN   | Minute (0–59)                   |
+| HOUR  | Hour (0–23)                     |
+| DOM   | Day of Month (1–31)             |
+| MON   | Month (1–12)                    |
+| DOW   | Day of Week (0–7, 0/7 = Sunday) |
+| CMD   | Command to execute              |
+
+## Wildcards
+
+* `*` → Any value (every minute, hour, day, etc.)
+
+Example:
+
+```text
+0 */12 * * * cp -R /home/user/Documents /var/backups/
+```
+
+* Runs **every 12 hours** at **minute 0**.
+
+## Special Cron Keyword
+
+```text
+@reboot
+```
+
+* Runs the command **once every time the system starts**.
+
+## Managing Crontabs
+
+Edit your crontab:
+
+```bash
+crontab -e
+```
+
+View your crontab:
+
+```bash
+crontab -l
+```
+
+## Important Commands
+
+```bash
+crontab -e    # Edit cron jobs
+crontab -l    # List cron jobs
+```
+
+# Linux Packages & Repositories – Quick Notes
+
+## Package Repository
+
+* A **repository (repo)** is an online storage of software packages.
+* Ubuntu uses **APT (Advanced Package Tool)** to manage packages.
+* You can use **official** or **third-party/community** repositories.
+
+## APT Commands
+
+Update package list:
+
+```bash
+sudo apt update
+```
+
+Install software:
+
+```bash
+sudo apt install <package>
+```
+
+Remove software:
+
+```bash
+sudo apt remove <package>
+```
+
+## Adding a Repository
+
+Add a repository:
+
+```bash
+sudo add-apt-repository <repository>
+```
+
+Or manually:
+
+1. Add the **GPG key** (verifies software authenticity).
+2. Add the repository to `/etc/apt/sources.list.d/`.
+3. Run:
+
+```bash
+sudo apt update
+```
+
+4. Install the package:
+
+```bash
+sudo apt install <package>
+```
+
+## Removing a Repository
+
+Remove repository:
+
+```bash
+sudo add-apt-repository --remove <repository>
+```
+
+Or delete its file from:
+
+```text
+/etc/apt/sources.list.d/
+```
+
+Then remove the package:
+
+```bash
+sudo apt remove <package>
+```
+
+## Important Commands
+
+```bash
+sudo apt update
+sudo apt install <package>
+sudo apt remove <package>
+sudo add-apt-repository <repo>
+sudo add-apt-repository --remove <repo>
+```
+
+# Linux Log Files – Quick Notes
+
+## What are Log Files?
+
+* Log files store information about **system activities, applications, and services**.
+* Located in:
+
+```text
+/var/log
+```
+
+## Common Apache Logs
+
+* **access.log** → Records every request made to the web server.
+* **error.log** → Records server errors and issues.
+
+## Common Commands
+
+Go to log directory:
+
+```bash
+cd /var/log
+```
+
+View Apache logs:
+
+```bash
+cd /var/log/apache2
+ls
+sudo cat access.log
+sudo cat error.log
+```
+
+## Apache Access Log
+
+A typical entry:
+
+```text
+IP_ADDRESS - - [Date/Time] "GET /file HTTP/1.1" Status Size
+```
+
+* **1st field** → Client IP address.
+* **GET /file** → File/page requested.
+* **Status Code** → HTTP response (e.g., 200 = OK, 404 = Not Found).
+
+## Important Logs
+
+* `/var/log/apache2/access.log`
+* `/var/log/apache2/error.log`
+* `/var/log/auth.log` → Authentication/Login logs.
+* `/var/log/syslog` → General system logs.
 

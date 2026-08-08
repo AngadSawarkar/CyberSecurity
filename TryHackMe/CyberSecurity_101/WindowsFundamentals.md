@@ -1,4 +1,5 @@
 # Module 3
+# Room 1
 # Windows NTFS – Quick Notes
 
 ## File Systems
@@ -49,7 +50,6 @@ Right-click File/Folder → Properties → Security
 
 
 # Windows Folder – Quick Notes
-
 ## Windows Folder
 
 * Default location:
@@ -82,5 +82,38 @@ C:\Windows\System32
 * ⚠️ Do **not** delete or modify files in **System32**.
 * Damaging System32 can make Windows **unbootable/inoperable**.
 * `%windir%` is the easiest way to access the Windows folder regardless of where Windows is installed.
+
+# Windows User Accounts
+
+## Account Types
+
+Windows has two main local user account types:
+
+- **Administrator** – Can add/remove users, modify groups and system settings, install programs, and make system-level changes.
+- **Standard User** – Has limited permissions and generally cannot make system-level changes.
+
+## User Profiles
+
+User profiles are stored in:
+
+`C:\Users\<username>`
+
+Common folders include:
+
+- Desktop
+- Documents
+- Downloads
+- Music
+- Pictures
+
+A user's profile is created when they log in for the first time.
+
+## Local Users & Groups
+
+Open the Local Users and Groups management console:
+
+```cmd
+lusrmgr.msc
+  
 
 
